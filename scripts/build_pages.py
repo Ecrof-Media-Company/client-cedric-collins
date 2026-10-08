@@ -34,7 +34,7 @@ def header(active):
     <nav class="menu" aria-label="Primary">
       {links}
     </nav>
-    <div class="nav-cta"><a class="phone" href="tel:{PHONE_TEL}">{PHONE}</a><a class="btn btn-brass" href="contact.html">Free Consultation</a><label for="burger" class="burger-lbl" aria-label="Toggle menu"><span></span><span></span><span></span></label></div>
+    <div class="nav-cta"><a class="phone" href="tel:{PHONE_TEL}">{PHONE}</a><a class="btn btn-brass" href="contact.html"><span class="lg">Free Consultation</span><span class="sm">Free Consult</span></a><label for="burger" class="burger-lbl" aria-label="Toggle menu"><span></span><span></span><span></span></label></div>
   </div>
 </header>'''
 

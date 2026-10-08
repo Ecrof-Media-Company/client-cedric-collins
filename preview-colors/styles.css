@@ -330,3 +330,21 @@ footer{background:var(--ink);color:#e5ded2;position:relative;z-index:2;padding:5
   .photo-band{min-height:340px}
 }
 .prose a{color:var(--brass);font-weight:600;text-decoration:underline;text-decoration-color:rgba(73,11,26,.3);text-underline-offset:3px}
+
+/* phone header: keep CTA + menu button on screen */
+.nav-cta .sm{display:none}
+@media(max-width:480px){
+  .wrap{padding:0 18px}
+  .nav{gap:10px}
+  .seal{width:36px;height:36px;font-size:1.05rem}
+  .brand{gap:9px}
+  .brand b{font-size:.98rem}
+  .brand .role{font-size:.58rem;letter-spacing:.18em}
+  .nav-cta{gap:8px}
+  .nav-cta .btn{padding:10px 14px;font-size:.8rem}
+  .nav-cta .lg{display:none}.nav-cta .sm{display:inline}
+  .burger-lbl{width:38px;height:38px}
+  .menu{padding:8px 18px 24px}
+  .portrait .badge{right:-6px}
+  .portrait .tag{left:-8px}
+}
