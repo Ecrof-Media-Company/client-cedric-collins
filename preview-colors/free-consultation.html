@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free Divorce &amp; Custody Consultation | Cedric P. Collins</title>
+<meta name="description" content="Request a free, confidential 30 minute consultation with Central Ohio divorce and custody attorney Cedric P. Collins." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#142841" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+/* Landing page: one purpose, no nav. Intake is staged so it never feels like Stage 3. */
+.lp-top{padding:22px 0;border-bottom:1px solid var(--line)}
+.lp-top .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.lp{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;padding-top:56px;padding-bottom:80px}
+.lp h1{font-family:'Newsreader',serif;font-weight:400;font-size:clamp(2.2rem,4.2vw,3.3rem);line-height:1.06}
+.lp h1 em{font-style:italic;color:var(--brass)}
+.lp .sub{margin-top:20px;font-size:1.08rem;color:var(--text);max-width:30em}
+.lp .ph-img{aspect-ratio:4/3;margin-top:32px}
+.expect{margin-top:34px;display:grid;gap:14px}
+.expect div{display:flex;gap:14px;align-items:flex-start}
+.expect b{flex:0 0 30px;height:30px;border-radius:50%;background:var(--bone-2);color:var(--brass);display:grid;place-items:center;font-family:'Newsreader',serif;font-weight:500}
+.expect span{color:var(--text);font-size:.96rem}
+.expect strong{color:var(--ink);font-weight:600}
+.card{background:var(--paper-card);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:var(--shadow);position:sticky;top:24px}
+.steps{display:flex;gap:8px;margin-bottom:22px}
+.steps i{flex:1;height:4px;border-radius:4px;background:var(--bone-2)}
+.steps i.on{background:var(--brass)}
+.card h2{font-size:1.6rem;max-width:none}
+.card .hint{font-size:.9rem;color:var(--moss);margin:6px 0 20px}
+.opts{display:grid;gap:10px;margin-bottom:18px}
+.opt{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:13px 15px;cursor:pointer;font-size:.95rem;transition:.2s;background:#fff8}
+.opt:hover{border-color:var(--slate)}
+.opt input{accent-color:var(--brass)}
+.opt:has(input:checked){border-color:var(--brass);background:rgba(73,11,26,.04)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note{border-radius:12px;padding:18px 20px;font-size:.94rem;margin:6px 0 18px}
+.note.warn{background:var(--bone-2);color:var(--ink)}
+.note.ok{background:rgba(121,141,166,.15);color:var(--ink)}
+.stage{display:none}.stage.on{display:block}
+.skip-link{display:block;text-align:center;margin-top:14px;font-size:.88rem;color:var(--moss);text-decoration:underline;cursor:pointer;background:none;border:0;width:100%}
+.lp-foot{border-top:1px solid var(--line);padding:26px 0 40px;font-size:.8rem;color:var(--moss)}
+.lp-foot a{text-decoration:underline}
+@media(max-width:920px){.lp{grid-template-columns:1fr;gap:36px;padding-top:36px}.card{position:static;padding:26px}}
+@media(max-width:480px){.row2{grid-template-columns:1fr}.lp .ph-img{display:none}.lp-top .btn{padding:10px 14px;font-size:.8rem}.expect{margin-top:24px}}
+.lp-top .btn{white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="lp-top" style="position:static;background:none;backdrop-filter:none">
+  <div class="wrap">
+    <span class="brand"><span class="seal" aria-hidden="true">C</span><span><b>Cedric P. Collins</b><span class="role">Attorney at Law</span></span></span>
+    <a class="btn btn-ghost" href="tel:+17408808510">Call (740) 880&#8202;8510</a>
+  </div>
+</header>
+
+<main id="main" class="wrap lp">
+  <div>
+    <p class="label">Free &middot; Confidential &middot; 30 minutes</p>
+    <h1 style="margin-top:14px">Talk it through with a family lawyer, <em>free.</em></h1>
+    <p class="sub">Divorce, custody, or a change to an order that no longer works. Tell Cedric what you are facing and leave your consult knowing where you stand and what comes next.</p>
+    <div class="ph-img"><img src="img/kitchen-table.jpg" alt="A parent and child at home together" /></div>
+    <div class="expect" aria-label="What to expect">
+      <div><b>1</b><span><strong>Tell us the basics.</strong> Two minutes. More detail is optional and makes your consult go further.</span></div>
+      <div><b>2</b><span><strong>Pick a time.</strong> In person in Pickerington or virtual, whatever fits your week.</span></div>
+      <div><b>3</b><span><strong>Your 30 minute consult.</strong> Cedric listens, explains your options under Ohio law, and gives you a realistic next step. No pressure to commit.</span></div>
+    </div>
+  </div>
+
+  <!-- Intake. Posts to a placeholder until the GHL form/webhook exists.
+       SENSITIVE: Stage 2 collects children's names and DOBs. It must post to GHL (or another secure
+       handler), never a free form service. Stage 3 (SSN, finances) is NOT collected here by design. -->
+  <div class="card" id="intake" data-endpoint="REPLACE_WITH_GHL_WEBHOOK_URL">
+    <div class="steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+
+    <!-- Stage 1: interest + qualify -->
+    <form class="stage on" id="s1" novalidate>
+      <h2>What do you need help with?</h2>
+      <p class="hint">Choose the closest fit.</p>
+      <div class="opts" role="radiogroup">
+        <label class="opt"><input type="radio" name="service" value="dissolution-divorce" required /> Divorce or dissolution</label>
+        <label class="opt"><input type="radio" name="service" value="custody" /> Custody or parenting time (never married)</label>
+        <label class="opt"><input type="radio" name="service" value="modification" /> Changing an existing order</label>
+        <label class="opt"><input type="radio" name="service" value="third-party" /> Grandparent or third party custody</label>
+        <label class="opt"><input type="radio" name="service" value="contempt" /> Someone is not following an order</label>
+      </div>
+      <div class="field"><label for="county">Which county do you live in?</label>
+        <select id="county" name="county" required>
+          <option value="">Select your county</option>
+          <option value="franklin">Franklin County</option>
+          <option value="fairfield">Fairfield County</option>
+          <option value="licking">Licking County</option>
+          <option value="other-ohio">Another Ohio county</option>
+          <option value="outside-ohio">Outside Ohio</option>
+        </select>
+      </div>
+      <div class="note warn" id="nofit" hidden>
+        Cedric practices in Franklin, Fairfield, and Licking Counties, so he may not be the right fit for your case. If your case is already filed in one of those counties, call <a href="tel:+17408808510"><u>(740) 880&#8202;8510</u></a>. Otherwise, your county bar association&rsquo;s lawyer referral service can connect you with a local family lawyer.
+      </div>
+      <div id="contact-fields">
+        <div class="row2">
+          <div class="field"><label for="fname">First name</label><input id="fname" name="first_name" autocomplete="given-name" required /></div>
+          <div class="field"><label for="lname">Last name</label><input id="lname" name="last_name" autocomplete="family-name" required /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="phone">Mobile phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required /></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+        </div>
+        <div class="field"><label for="summary">In a sentence or two, what is going on?</label><textarea id="summary" name="summary" style="min-height:90px" required></textarea></div>
+        <fieldset class="consent">
+          <legend>Text messages (optional)</legend>
+          <label><input type="checkbox" name="sms_consent_service" value="yes" /> <span>I agree to receive text messages from Law Office of Cedric P. Collins, LLC about my inquiry, consultation scheduling, and appointment reminders at the number provided. Message frequency varies. Message and data rates may apply. Reply HELP for help or STOP to opt out.</span></label>
+          <p>Consent is not required to request a consultation. <a href="terms.html#sms">SMS Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+        </fieldset>
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="btn btn-brass" type="submit" style="width:100%;padding:15px">Request my free consult</button>
+        <p class="micro">Please do not share confidential details yet. This does not create an attorney client relationship.</p>
+      </div>
+    </form>
+
+    <!-- Stage 2: pre-consult, optional, adapts to the service chosen -->
+    <form class="stage" id="s2" novalidate>
+      <h2>Got it. Have five more minutes?</h2>
+      <p class="hint">Optional. These answers let Cedric run a conflict check and come to your consult prepared. Skip anything you are not sure about.</p>
+      <div class="field"><label for="other_party">Full name of the other party</label><input id="other_party" name="opposing_party" /><small class="micro" style="margin-top:4px">Used only to check for conflicts of interest.</small></div>
+      <div class="row2">
+        <div class="field"><label for="ohio_res">How long have you lived in Ohio?</label>
+          <select id="ohio_res" name="ohio_residency"><option value="">Select</option><option>Less than 6 months</option><option>6 months to 1 year</option><option>More than 1 year</option></select></div>
+        <div class="field"><label for="county_res">And in your current county?</label>
+          <select id="county_res" name="county_residency"><option value="">Select</option><option>Less than 90 days</option><option>90 days or more</option></select></div>
+      </div>
+      <div class="note ok" id="reswarn" hidden>Ohio generally requires six months in the state before filing for divorce. Cedric can still talk through your options and timing.</div>
+      <div data-for="dissolution-divorce">
+        <div class="row2">
+          <div class="field"><label for="dom">Date of marriage</label><input id="dom" name="marriage_date" type="date" /></div>
+          <div class="field"><label for="dos">Date of separation (if any)</label><input id="dos" name="separation_date" type="date" /></div>
+        </div>
+        <div class="field"><label for="bk">Has either of you filed for bankruptcy, or is one pending?</label>
+          <select id="bk" name="bankruptcy"><option value="">Select</option><option>No</option><option>Yes</option><option>Not sure</option></select></div>
+      </div>
+      <div data-for="custody modification third-party contempt dissolution-divorce">
+        <div class="field"><label for="kids">Children involved (first names and dates of birth)</label><textarea id="kids" name="children" style="min-height:70px" placeholder="e.g. Jordan, 04/2018"></textarea></div>
+        <div class="field"><label for="orders">Is there a current court order about custody or support?</label>
+          <select id="orders" name="current_orders"><option value="">Select</option><option>No</option><option>Yes, in Franklin County</option><option>Yes, in Fairfield County</option><option>Yes, in Licking County</option><option>Yes, somewhere else</option></select></div>
+      </div>
+      <div class="field"><label for="prior">Have you talked with another attorney about this?</label>
+        <select id="prior" name="prior_attorneys"><option value="">Select</option><option>No</option><option>Yes</option></select></div>
+      <div class="field"><label for="docs">Received court papers? Upload them (optional)</label><input id="docs" name="documents" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.heic" /><small class="micro" style="margin-top:4px">A complaint, motion, or notice of hearing helps Cedric see exactly what you received.</small></div>
+      <button class="btn btn-brass" type="submit" style="width:100%;padding:15px">Send and pick a time</button>
+      <button class="skip-link" type="button" id="skip">Skip for now and pick a time</button>
+    </form>
+
+    <!-- Stage 3 (on site): book. Real intake Stage 3 happens only after Cedric accepts the client. -->
+    <div class="stage" id="s3">
+      <h2>Thank you. Let&rsquo;s find a time.</h2>
+      <p class="hint">Choose a 30 minute slot that works for you. You will get a confirmation right away.</p>
+      <!-- GHL calendar embed goes here once the calendar is set up -->
+      <div class="note ok">Calendar coming soon. For now, call <a href="tel:+17408808510"><u>(740) 880&#8202;8510</u></a> and we will get you scheduled.</div>
+      <a class="btn btn-brass" href="tel:+17408808510" style="width:100%;text-align:center;padding:15px">Call to schedule</a>
+    </div>
+  </div>
+</main>
+
+<footer class="lp-foot" style="background:none;color:inherit;padding:26px 0 40px">
+  <div class="wrap">Law Office of Cedric P. Collins, LLC &middot; 38 East Columbus St., Suite 201, Pickerington, OH 43147 &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms &amp; SMS Terms</a><br>This page is for general information and does not create an attorney client relationship. Prior results do not guarantee a similar outcome.</div>
+</footer>
+
+<script>
+(function(){
+  const card=document.getElementById('intake'), endpoint=card.dataset.endpoint;
+  const s1=document.getElementById('s1'), s2=document.getElementById('s2'), s3=document.getElementById('s3');
+  const bars=card.querySelectorAll('.steps i'), county=document.getElementById('county');
+  const nofit=document.getElementById('nofit'), contact=document.getElementById('contact-fields');
+  const SERVE=['franklin','fairfield','licking'];
+  let lead={};
+
+  function show(n){[s1,s2,s3].forEach((s,i)=>s.classList.toggle('on',i===n));bars.forEach((b,i)=>b.classList.toggle('on',i<=n));card.scrollIntoView({behavior:'smooth',block:'start'});}
+  function send(stage,data){
+    // Tags travel with every post so GHL can route by service and county.
+    const body=Object.assign({stage,service_tag:lead.service,county:lead.county,qualified:SERVE.includes(lead.county),source:'landing-free-consultation'},data);
+    if(endpoint.includes('REPLACE')) return Promise.resolve(); // preview: no handler wired yet
+    const fd=new FormData(); Object.entries(body).forEach(([k,v])=>fd.append(k,v));
+    return fetch(endpoint,{method:'POST',body:fd}).catch(()=>{});
+  }
+  county.addEventListener('change',()=>{const out=county.value&&!SERVE.includes(county.value);nofit.hidden=!out;contact.hidden=out;});
+
+  s1.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!s1.reportValidity())return;
+    const d=Object.fromEntries(new FormData(s1)); if(d._gotcha)return;
+    lead={service:d.service,county:d.county};
+    // Stage 2 only shows the questions that fit the service chosen.
+    s2.querySelectorAll('[data-for]').forEach(el=>{el.hidden=!el.dataset.for.split(' ').includes(lead.service);});
+    send(1,d).then(()=>show(1));
+  });
+  document.getElementById('ohio_res').addEventListener('change',e=>{
+    document.getElementById('reswarn').hidden=!(e.target.value==='Less than 6 months'&&lead.service==='dissolution-divorce');
+  });
+  s2.addEventListener('submit',e=>{e.preventDefault();const d={};new FormData(s2).forEach((v,k)=>{if(typeof v==='string')d[k]=v;});send(2,d).then(()=>show(2));});
+  document.getElementById('skip').addEventListener('click',()=>show(2));
+})();
+</script>
+<!-- GHL chat + voice widget: paste the GoHighLevel embed snippet here. Keep the bottom-right corner free of other fixed elements. -->
+</body>
+</html>
