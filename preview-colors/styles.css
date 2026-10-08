@@ -348,3 +348,11 @@ footer{background:var(--ink);color:#e5ded2;position:relative;z-index:2;padding:5
   .portrait .badge{right:-6px}
   .portrait .tag{left:-8px}
 }
+
+/* SMS consent (A2P): optional, unchecked, links beside the boxes */
+.consent{border:1px solid var(--line);border-radius:10px;padding:16px 18px 6px;margin:4px 0 20px;background:var(--paper-card)}
+.consent legend{font-size:.82rem;font-weight:600;color:var(--forest);padding:0 6px}
+.consent label{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;line-height:1.5;color:var(--text);margin-bottom:12px;cursor:pointer}
+.consent input{margin-top:3px;accent-color:var(--brass);flex:0 0 auto}
+.consent p{font-size:.78rem;color:var(--moss);margin-bottom:10px}
+.consent a,.foot-bottom a{text-decoration:underline;text-underline-offset:3px}

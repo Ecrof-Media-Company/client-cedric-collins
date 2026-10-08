@@ -2,7 +2,9 @@
 Builds city pages, resources, articles, and updates shared chrome for Cedric's site.
 Run from the site folder (preview-colors). Idempotent on the generated pages;
 existing pages are patched once (guarded by markers)."""
-import json, re, pathlib
+import json, re, pathlib, sys
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import legal
 
 SITE = "https://www.cedriccollinslaw.com/"
 PHONE_TEL = "+17408808510"
@@ -49,7 +51,7 @@ FOOTER = f'''<footer>
       {AREAS_COL}
       <div class="foot-col"><h4>Office</h4><a href="tel:{PHONE_TEL}">{PHONE}</a><a href="https://maps.google.com/?q=38+East+Columbus+St,+Pickerington,+OH+43147" target="_blank" rel="noopener">38 E. Columbus St., Ste 201<br>Pickerington, OH 43147</a></div>
     </div>
-    <div class="foot-bottom"><span>&copy; 2026 Law Office of Cedric P. Collins, LLC</span><span>Serving Columbus &amp; Central Ohio</span></div>
+    <div class="foot-bottom"><span>&copy; 2026 Law Office of Cedric P. Collins, LLC</span><span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; SMS Terms</a></span><span>Serving Columbus &amp; Central Ohio</span></div>
     <p class="disc">The information on this website is for general purposes only and does not constitute legal advice. Viewing this site or contacting the firm does not create an attorney client relationship. Prior results do not guarantee a similar outcome.</p>
   </div>
 </footer>
@@ -369,16 +371,37 @@ def build_resources():
 ''' + FOOTER
     pathlib.Path("resources.html").write_text(html)
 
+def legal_page(path, title, desc, h1, body):
+    html = head(f"{title} | Cedric P. Collins", desc, path, [crumbs(("Home",""),(title,path))])
+    html += "\n<!-- DRAFT: Cedric must review before launch. Required live before A2P approval. -->\n" + header("") + f"""
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <span>{title}</span></p>
+    <h1 class="page-h">{h1}</h1>
+    <p class="sub">Effective October 8, 2026</p>
+  </div>
+</section>
+<section class="block" style="padding-top:40px">
+  <div class="wrap"><div class="prose narrow">
+{body}
+  </div></div>
+</section>
+</main>
+
+""" + FOOTER
+    pathlib.Path(path).write_text(html)
+
 # ---------------------------------------------------------------- patch existing pages
 def patch_existing():
     for f in ["index.html","about.html","divorce.html","child-custody.html","contact.html"]:
         s = pathlib.Path(f).read_text()
-        if "<!-- patched-oct26 -->" in s: continue
         active = f
         s = re.sub(r'<a href="#main" class="skip">.*?</header>', header(active), s, count=1, flags=re.S)
         s = re.sub(r'<footer>.*$', FOOTER, s, count=1, flags=re.S)
         s = s.replace('<meta name="robots" content="index, follow, max-image-preview:large" />\n', '')
-        s = s.replace("<body>", "<body>\n<!-- patched-oct26 -->", 1)
+        if "<!-- patched-oct26 -->" not in s: s = s.replace("<body>", "<body>\n<!-- patched-oct26 -->", 1)
         pathlib.Path(f).write_text(s)
 
 def hero_photo(f, img, alt):
@@ -429,7 +452,7 @@ def patch_home():
     pathlib.Path("index.html").write_text(s)
 
 def sitemap():
-    pages = ["","about.html","divorce.html","child-custody.html","contact.html","resources.html"] + \
+    pages = ["","about.html","divorce.html","child-custody.html","contact.html","resources.html","privacy.html","terms.html"] + \
             [city_file(s) for s,_ in CITIES] + [a["path"] for a in ARTICLES]
     urls = "\n".join(f"  <url><loc>{SITE}{p}</loc><lastmod>2026-10-08</lastmod></url>" for p in pages)
     pathlib.Path("sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
@@ -443,5 +466,8 @@ if __name__ == "__main__":
     for s,n in CITIES: build_city(s,n)
     for a in ARTICLES: build_article(a)
     build_resources()
+    legal_page("privacy.html", "Privacy Policy", "How the Law Office of Cedric P. Collins collects, uses, and protects your information, including text messaging.", "Privacy <em>Policy</em>", legal.PRIVACY)
+    legal_page("terms.html", "Terms and SMS Terms", "Website terms of use and text messaging terms for the Law Office of Cedric P. Collins.", "Terms and <em>SMS Terms</em>", legal.TERMS)
+    legal.patch_contact(pathlib)
     sitemap()
     print("built")
