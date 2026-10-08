@@ -4,7 +4,7 @@ Run from the site folder (preview-colors). Idempotent on the generated pages;
 existing pages are patched once (guarded by markers)."""
 import json, re, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-import legal
+import legal, services
 
 SITE = "https://www.cedriccollinslaw.com/"
 PHONE_TEL = "+17408808510"
@@ -47,7 +47,7 @@ FOOTER = f'''<footer>
   <div class="wrap">
     <div class="foot-grid">
       <div class="fb"><b>Law Office of Cedric P. Collins, LLC</b><p>A divorce and family law practice helping Central Ohio families move forward with clarity and a steady advocate in their corner.</p></div>
-      <div class="foot-col"><h4>Practice</h4><a href="divorce.html">Divorce &amp; Dissolution</a><a href="child-custody.html">Child Custody</a><a href="about.html">About Cedric</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h4>Practice</h4><a href="divorce.html">Divorce &amp; Dissolution</a><a href="child-custody.html">Child Custody</a><a href="modifications-and-enforcement.html">Modifications &amp; Enforcement</a><a href="grandparents-and-third-party-custody.html">Grandparents &amp; Third Party</a><a href="about.html">About Cedric</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
       {AREAS_COL}
       <div class="foot-col"><h4>Office</h4><a href="tel:{PHONE_TEL}">{PHONE}</a><a href="https://maps.google.com/?q=38+East+Columbus+St,+Pickerington,+OH+43147" target="_blank" rel="noopener">38 E. Columbus St., Ste 201<br>Pickerington, OH 43147</a></div>
     </div>
@@ -212,8 +212,8 @@ def build_city(slug, name):
       <ul>
         <li><span><a href="divorce.html">Divorce and dissolution</a>, including property, debt, and spousal support</span></li>
         <li><span><a href="child-custody.html">Custody, shared parenting, and parenting time</a>, for married and unmarried parents</span></li>
-        <li>Child support, and changes to orders after the divorce is final</li>
-        <li>Third party and grandparent custody questions</li>
+        <li><span>Child support, and <a href="modifications-and-enforcement.html">changing or enforcing orders</a> after the case is final</span></li>
+        <li><span><a href="grandparents-and-third-party-custody.html">Grandparent and third party custody</a></span></li>
       </ul>
     </div>
   </div>
@@ -393,6 +393,44 @@ def legal_page(path, title, desc, h1, body):
 """ + FOOTER
     pathlib.Path(path).write_text(html)
 
+def build_service(v):
+    schemas=[{"@context":"https://schema.org","@type":"Service","name":re.sub("<[^>]+>","",v["crumb"]).replace("&amp;","&"),"description":v["desc"],
+              "provider":{"@type":"Attorney","name":"Law Office of Cedric P. Collins, LLC","telephone":"+1-740-880-8510","url":SITE},
+              "areaServed":[{"@type":"AdministrativeArea","name":c} for c in ("Franklin County, Ohio","Fairfield County, Ohio","Licking County, Ohio")]},
+             crumbs(("Home",""),(v["crumb"].replace("&amp;","&"),v["path"])), faq_schema(v["faqs"])]
+    secs="".join(f'<section class="block" style="padding-top:0"><div class="wrap"><div class="prose narrow rv"><h2>{h}</h2>{b}</div></div></section>\n' for h,b in v["sections"])
+    html=head(v["title"],v["desc"],v["path"],schemas)
+    html+="\n<!-- DRAFT: Cedric must review this legal content before launch. -->\n"+header("")+f'''
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap hero-split">
+    <div>
+      <p class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <span>{v["crumb"]}</span></p>
+      <h1 class="page-h">{v["h1"]}</h1>
+      <p class="sub">{v["sub"]}</p>
+      <div class="hero-actions"><a class="btn btn-brass" href="contact.html">Book a free consult</a><a class="btn btn-ghost" href="tel:{PHONE_TEL}">Call {PHONE}</a></div>
+    </div>
+    <div class="ph-img rv"><img src="{v["img"]}" alt="{v["alt"]}" loading="eager" /></div>
+  </div>
+</section>
+<div style="height:70px"></div>
+{secs}
+<section class="block" style="padding-top:0" aria-labelledby="fq">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num" aria-hidden="true">FAQ</span><h2 id="fq">Common <em>questions.</em></h2></div>
+    <div class="faq rv">
+{faq_html(v["faqs"],"fq")}
+    </div>
+  </div>
+</section>
+
+{consult()}
+</main>
+
+'''+FOOTER
+    pathlib.Path(v["path"]).write_text(html)
+
 # ---------------------------------------------------------------- patch existing pages
 def patch_existing():
     for f in ["index.html","about.html","divorce.html","child-custody.html","contact.html"]:
@@ -452,7 +490,7 @@ def patch_home():
     pathlib.Path("index.html").write_text(s)
 
 def sitemap():
-    pages = ["","about.html","divorce.html","child-custody.html","contact.html","resources.html","privacy.html","terms.html"] + \
+    pages = ["","about.html","divorce.html","child-custody.html","contact.html","resources.html","privacy.html","terms.html","modifications-and-enforcement.html","grandparents-and-third-party-custody.html"] + \
             [city_file(s) for s,_ in CITIES] + [a["path"] for a in ARTICLES]
     urls = "\n".join(f"  <url><loc>{SITE}{p}</loc><lastmod>2026-10-08</lastmod></url>" for p in pages)
     pathlib.Path("sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
@@ -469,5 +507,6 @@ if __name__ == "__main__":
     legal_page("privacy.html", "Privacy Policy", "How the Law Office of Cedric P. Collins collects, uses, and protects your information, including text messaging.", "Privacy <em>Policy</em>", legal.PRIVACY)
     legal_page("terms.html", "Terms and SMS Terms", "Website terms of use and text messaging terms for the Law Office of Cedric P. Collins.", "Terms and <em>SMS Terms</em>", legal.TERMS)
     legal.patch_contact(pathlib)
+    for v in services.SERVICES: build_service(v)
     sitemap()
     print("built")
