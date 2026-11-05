@@ -4,8 +4,8 @@ separate service vs updates consent, HELP/STOP, frequency, rates, carrier line,
 and no sharing of mobile opt-in data for marketing. DRAFT until Cedric approves."""
 
 FIRM = "Law Office of Cedric P. Collins, LLC"
-PHONE_TEL = "+17408808510"
-PHONE = "(740) 880&#8202;8510"
+PHONE_TEL = "+16144085608"
+PHONE = "(614) 408-5608"
 
 CONSENT = f'''
           <fieldset class="consent">
@@ -15,7 +15,7 @@ CONSENT = f'''
             <p>Consent is not required to request a consultation. <a href="terms.html#sms">SMS Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
           </fieldset>'''
 
-CONTACT_BLOCK = f'<p>{FIRM}<br>38 East Columbus St., Suite 201, Pickerington, OH 43147<br>Phone: <a href="tel:{PHONE_TEL}">{PHONE}</a></p>'
+CONTACT_BLOCK = f'<p>{FIRM}<br>P.O. Box 108, Reynoldsburg, OH 43068<br>Email: <a href="mailto:cedric@cedriccollinslaw.com">cedric@cedriccollinslaw.com</a><br>Phone: <a href="tel:{PHONE_TEL}">{PHONE}</a></p>'
 
 PRIVACY = f"""<p>This Privacy Policy explains how {FIRM} (&ldquo;the firm,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;) collects, uses, and protects information when you visit this website, contact us, or receive text messages from us.</p>
 <h3>Information we collect</h3>

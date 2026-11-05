@@ -7,9 +7,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import legal, services
 
 SITE = "https://www.cedriccollinslaw.com/"
-PHONE_TEL = "+17408808510"
-PHONE = "(740) 880&#8202;8510"
-ADDR = "38 East Columbus St., Suite 201 · Pickerington, OH 43147"
+PHONE_TEL = "+16144085608"
+PHONE = "(614) 408-5608"
+ADDR = "Mon to Fri, 9am to 5pm · Serving Columbus &amp; Central Ohio"
 WIDGET = "<!-- GHL chat + voice widget: paste the GoHighLevel embed snippet here. Keep the bottom-right corner free of other fixed elements. -->"
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com" />\n'
@@ -49,7 +49,7 @@ FOOTER = f'''<footer>
       <div class="fb"><b>Law Office of Cedric P. Collins, LLC</b><p>A divorce and family law practice helping Central Ohio families move forward with clarity and a steady advocate in their corner.</p></div>
       <div class="foot-col"><h4>Practice</h4><a href="divorce.html">Divorce &amp; Dissolution</a><a href="child-custody.html">Child Custody</a><a href="modifications-and-enforcement.html">Modifications &amp; Enforcement</a><a href="grandparents-and-third-party-custody.html">Grandparents &amp; Third Party</a><a href="about.html">About Cedric</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
       {AREAS_COL}
-      <div class="foot-col"><h4>Office</h4><a href="tel:{PHONE_TEL}">{PHONE}</a><a href="https://maps.google.com/?q=38+East+Columbus+St,+Pickerington,+OH+43147" target="_blank" rel="noopener">38 E. Columbus St., Ste 201<br>Pickerington, OH 43147</a></div>
+      <div class="foot-col"><h4>Office</h4><a href="tel:{PHONE_TEL}">{PHONE}</a><a href="mailto:cedric@cedriccollinslaw.com">cedric@cedriccollinslaw.com</a><span>Mon to Fri, 9am to 5pm</span><span>Mail: P.O. Box 108<br>Reynoldsburg, OH 43068</span></div>
     </div>
     <div class="foot-bottom"><span>&copy; 2026 Law Office of Cedric P. Collins, LLC</span><span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; SMS Terms</a></span><span>Serving Columbus &amp; Central Ohio</span></div>
     <p class="disc">The information on this website is for general purposes only and does not constitute legal advice. Viewing this site or contacting the firm does not create an attorney client relationship. Prior results do not guarantee a similar outcome.</p>
@@ -138,12 +138,12 @@ LICKING = ("Licking County Court of Common Pleas, Domestic Relations Court",
 CITY = {
  "pickerington": dict(
    counties="Fairfield and Franklin Counties", courts=[FAIRFIELD, FRANKLIN], img="img/neighborhood.jpg",
-   h1='A Pickerington family lawyer who is <em>right here</em> in town.',
-   sub="Cedric&rsquo;s office is on East Columbus Street in Pickerington. If you live here, your attorney is a short drive away, and you can sit across the table from him instead of sending emails into the dark.",
+   h1='A family lawyer for <em>Pickerington</em> families.',
+   sub="Cedric serves Pickerington families from right here in Central Ohio. You talk with your attorney directly, by phone or video, instead of sending emails into the dark.",
    intro=["Most of Pickerington sits in Fairfield County, with a smaller piece in Franklin County. That detail matters more than people expect: the county you live in decides which court hears your divorce or custody case, which local rules apply, and how long things tend to take.",
           "Cedric helps Pickerington parents with divorce and dissolution, custody and parenting time, child support, and changes to orders that no longer fit. Many families here have children in school, so parenting schedules get built around the school year, activities, and the real rhythm of your week, not a template."],
    faqs=[("Which court handles a Pickerington divorce?", "It depends on which side of the county line your home is on. Most Pickerington addresses are in Fairfield County, so the case is filed with the Fairfield County Domestic Relations Division in Lancaster. Homes in the Franklin County portion file in Columbus. Your property tax bill shows your county, or Cedric can confirm it at your free consult."),
-         ("Can I meet with Cedric in person in Pickerington?", "Yes. The office is at 38 East Columbus Street, Suite 201, in Pickerington. Virtual consultations are available too if that is easier for your schedule."),
+         ("Can I meet with Cedric in person?", "Consultations happen by phone or video. If you would rather meet face to face, say so when you book and Cedric will set a time and place."),
          ("I just moved to Pickerington. Can I file for divorce here?", "Ohio requires that you have lived in the state for at least six months before filing for divorce, and you generally file in a county where you or your spouse has lived for at least 90 days. If you moved recently, Cedric will walk you through your timing.")]),
  "reynoldsburg": dict(
    counties="Franklin, Fairfield, and Licking Counties", courts=[FRANKLIN, FAIRFIELD, LICKING], img="img/kids-playing.jpg",
@@ -170,7 +170,7 @@ CITY = {
    intro=["Canal Winchester is split between Franklin County and Fairfield County, so the court that hears your case depends on where your home sits. Franklin County cases are heard in downtown Columbus; Fairfield County cases are heard in Lancaster. Cedric practices in both.",
           "Canal Winchester has grown fast, and many families here are young: new homes, young kids, two working parents. Cedric helps with divorce and dissolution, custody and parenting time, child support, and agreements that are built to work for a busy family for years, not just for the day they are signed."],
    faqs=[("Which court hears a Canal Winchester custody case?", "It depends on the county your home is in. Franklin County cases go to the Domestic Relations and Juvenile Branch in Columbus. Fairfield County cases go to the Hall of Justice in Lancaster. Cedric will confirm your county at the free consult."),
-         ("Is Cedric&rsquo;s office close to Canal Winchester?", "Yes. The office is in Pickerington, a short drive north. In person and virtual consultations are both available."),
+         ("Does Cedric work with Canal Winchester families?", "Yes. Canal Winchester is in his Central Ohio service area. Consultations happen by phone or video. If you would rather meet face to face, say so when you book and Cedric will set a time and place."),
          ("Can a dissolution work if we both agree?", "Often, yes. A dissolution is a no fault process where both spouses agree on every term before filing. Ohio holds the final hearing 30 to 90 days after filing. It is usually faster and less costly than a contested divorce.")]),
 }
 
@@ -178,8 +178,8 @@ def build_city(slug, name):
     c = CITY[slug]; path = city_file(slug)
     schemas = [
       {"@context":"https://schema.org","@type":["Attorney","LegalService"],"name":"Law Office of Cedric P. Collins, LLC",
-       "url":SITE+path,"telephone":"+1-740-880-8510",
-       "address":{"@type":"PostalAddress","streetAddress":"38 East Columbus St., Suite 201","addressLocality":"Pickerington","addressRegion":"OH","postalCode":"43147","addressCountry":"US"},
+       "url":SITE+path,"telephone":"+1-614-408-5608",
+       "address":{"@type":"PostalAddress","streetAddress":"P.O. Box 108","addressLocality":"Reynoldsburg","addressRegion":"OH","postalCode":"43068","addressCountry":"US"},
        "areaServed":{"@type":"City","name":f"{name}, Ohio"},
        "knowsAbout":["Divorce","Dissolution of marriage","Child custody","Shared parenting","Child support","Post decree modification"]},
       crumbs(("Home",""),(f"{name} Family Law",path)), faq_schema(c["faqs"])]
@@ -395,7 +395,7 @@ def legal_page(path, title, desc, h1, body):
 
 def build_service(v):
     schemas=[{"@context":"https://schema.org","@type":"Service","name":re.sub("<[^>]+>","",v["crumb"]).replace("&amp;","&"),"description":v["desc"],
-              "provider":{"@type":"Attorney","name":"Law Office of Cedric P. Collins, LLC","telephone":"+1-740-880-8510","url":SITE},
+              "provider":{"@type":"Attorney","name":"Law Office of Cedric P. Collins, LLC","telephone":"+1-614-408-5608","url":SITE},
               "areaServed":[{"@type":"AdministrativeArea","name":c} for c in ("Franklin County, Ohio","Fairfield County, Ohio","Licking County, Ohio")]},
              crumbs(("Home",""),(v["crumb"].replace("&amp;","&"),v["path"])), faq_schema(v["faqs"])]
     secs="".join(f'<section class="block" style="padding-top:0"><div class="wrap"><div class="prose narrow rv"><h2>{h}</h2>{b}</div></div></section>\n' for h,b in v["sections"])
@@ -475,7 +475,7 @@ def areas_section():
   <div class="wrap">
     <div class="sec-head rv"><span class="sec-num" aria-hidden="true">&mdash;</span><h2 id="areas">Close to home, across <em>Central Ohio.</em></h2></div>
     <div class="cities">{cards}</div>
-    <p class="county-note rv">Cedric practices in Franklin, Fairfield, and Licking Counties, from his office in Pickerington.</p>
+    <p class="county-note rv">Cedric practices in Franklin, Fairfield, and Licking Counties.</p>
   </div>
 </section>
 '''

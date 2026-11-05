@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intake Preview | Cedric P. Collins</title>
+<meta name="description" content="A preview of how client intake could work for the Law Office of Cedric P. Collins." />
+<link rel="canonical" href="https://www.cedriccollinslaw.com/intake-preview.html" />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#142841" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Intake Preview | Cedric P. Collins" />
+<meta property="og:description" content="A preview of how client intake could work for the Law Office of Cedric P. Collins." />
+<meta property="og:url" content="https://www.cedriccollinslaw.com/intake-preview.html" />
+<meta property="og:image" content="https://www.cedriccollinslaw.com/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+/* Intake preview. Shown to Cedric only (noindex, not linked). Nothing on this page collects or sends data. */
+.pv-bar{background:var(--ink);color:#f4efe7;font-size:.86rem;text-align:center;padding:10px 16px}
+.pv-bar b{color:#fff}
+.tabs{display:inline-flex;gap:6px;background:var(--bone-2);border-radius:100px;padding:5px;margin-top:30px;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:.9rem;font-weight:600;border:0;background:none;color:var(--ink);padding:10px 20px;border-radius:100px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--brass);color:#f4efe7}
+.panel{display:none}.panel.on{display:block}
+.lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.lane{background:var(--paper-card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column}
+.lane .when{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--moss)}
+.lane h3{font-family:'Newsreader',serif;font-weight:500;font-size:1.3rem;margin:8px 0 6px;color:var(--ink)}
+.lane .who{font-size:.86rem;color:var(--text);margin-bottom:16px}
+.lane ul{list-style:none;display:grid;gap:7px}
+.lane li{font-size:.86rem;color:var(--ink);background:var(--bone);border-radius:7px;padding:8px 10px;line-height:1.35}
+.lane li small{display:block;color:var(--moss);font-size:.76rem;margin-top:2px}
+.lane.l1{border-top:4px solid var(--slate)}
+.lane.l2{border-top:4px solid var(--slate)}
+.lane.l3{border-top:4px solid var(--brass)}
+.lane.l4{border-top:4px solid var(--ink)}
+.lane .lock{display:inline-block;font-size:.72rem;font-weight:600;background:var(--brass);color:#f4efe7;border-radius:100px;padding:3px 10px;margin-bottom:12px;align-self:flex-start}
+.new{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);margin-left:6px}
+.mocks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.mock{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.mock .top{background:var(--bone-2);padding:12px 18px;font-size:.78rem;font-weight:600;color:var(--moss);display:flex;justify-content:space-between}
+.mock .in{padding:20px 18px}
+.mock h4{font-family:'Newsreader',serif;font-weight:500;font-size:1.15rem;color:var(--ink);margin-bottom:12px}
+.mock .f{font-size:.76rem;font-weight:600;color:var(--forest);margin:10px 0 5px}
+.mock .box{border:1px solid var(--line);border-radius:7px;padding:9px 11px;font-size:.84rem;color:var(--moss);background:var(--paper-card)}
+.mock .pill{display:block;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:.84rem;margin-top:7px;color:var(--ink)}
+.mock .pill.on{border-color:var(--brass);background:rgba(73,11,26,.05)}
+.mock .go{margin-top:16px;background:var(--brass);color:#f4efe7;border-radius:100px;text-align:center;padding:11px;font-size:.84rem;font-weight:600}
+.mock .vault{margin-top:6px;font-size:.8rem;color:var(--text);background:var(--bone);border-radius:8px;padding:10px 12px}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:10px}
+.opts3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.op{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:var(--paper-card);cursor:pointer;transition:.2s;text-align:left;font:inherit;color:inherit}
+.op:hover{border-color:var(--slate)}
+.op[aria-pressed="true"]{border-color:var(--brass);box-shadow:0 0 0 2px var(--brass) inset}
+.op .k{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--brass)}
+.op h3{font-family:'Newsreader',serif;font-weight:500;font-size:1.35rem;margin:8px 0 10px;color:var(--ink)}
+.op p{font-size:.92rem;color:var(--text)}
+.op ul{list-style:none;margin-top:14px;display:grid;gap:6px}
+.op li{font-size:.86rem;color:var(--ink);padding-left:18px;position:relative}
+.op li::before{content:"\25C6";position:absolute;left:0;color:var(--brass);font-size:.7em;top:.35em}
+.result{margin-top:22px;border-radius:14px;background:var(--ink);color:#e5ded2;padding:24px 26px;font-size:.98rem}
+.result b{color:#fff}
+@media(max-width:1020px){.lanes{grid-template-columns:1fr 1fr}.mocks,.opts3{grid-template-columns:1fr}}
+@media(max-width:640px){.lanes,.why{grid-template-columns:1fr}.tabs button{padding:9px 14px}}
+</style>
+</head>
+<body>
+<div class="pv-bar"><b>Preview for Cedric.</b> This page is not connected. Nothing here is saved or sent anywhere.</div>
+<a href="#main" class="skip">Skip to content</a>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Cedric P. Collins, Attorney at Law, home"><span class="seal" aria-hidden="true">C</span><span><b>Cedric P. Collins</b><span class="role">Attorney at Law</span></span></a>
+    <input type="checkbox" id="burger" class="burger" hidden />
+    <nav class="menu" aria-label="Primary">
+      <a class="lk" href="index.html">Home</a><a class="lk" href="about.html">About</a><a class="lk" href="divorce.html">Divorce</a><a class="lk" href="child-custody.html">Child Custody</a><a class="lk" href="resources.html">Resources</a><a class="lk" href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta"><a class="phone" href="tel:+16144085608">(614) 408-5608</a><a class="btn btn-brass" href="contact.html"><span class="lg">Free Consultation</span><span class="sm">Free Consult</span></a><label for="burger" class="burger-lbl" aria-label="Toggle menu"><span></span><span></span><span></span></label></div>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <p class="label">Your intake, rebuilt</p>
+    <h1 class="page-h">Every question on your form, <em>in the right place.</em></h1>
+    <p class="sub">We started from your 2024 Domestic Intake Form. Some of it belongs online before the consult so you walk in prepared. Some of it is too sensitive for a website and should only be collected once you take the case. Here is where each question goes.</p>
+    <div class="tabs" role="tablist" aria-label="Views">
+      <button role="tab" aria-selected="true" aria-controls="p-map" id="t-map">Where each question goes</button>
+      <button role="tab" aria-selected="false" aria-controls="p-client" id="t-client">What your client sees</button>
+      <button role="tab" aria-selected="false" aria-controls="p-back" id="t-back">What runs behind it</button>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:10px">
+  <div class="wrap">
+
+  <!-- MAP -->
+  <div class="panel on" id="p-map" role="tabpanel" aria-labelledby="t-map">
+    <div class="lanes">
+      <div class="lane l1">
+        <span class="when">Before the consult &middot; 2 min</span>
+        <h3>Request a consult</h3>
+        <p class="who">The client, on your website. Required, kept short so nobody bails.</p>
+        <ul>
+          <li>Name</li>
+          <li>Cell phone and email</li>
+          <li>What they need help with<small>Divorce, custody, modification, third party, enforcement</small></li>
+          <li>County they live in<small>Outside Franklin, Fairfield, Licking? Kindly pointed elsewhere</small></li>
+          <li>Briefly explain what you need help with</li>
+        </ul>
+      </div>
+      <div class="lane l2">
+        <span class="when">Before the consult &middot; optional</span>
+        <h3>Help Cedric prepare</h3>
+        <p class="who">The client, right after booking. Every question can be skipped.</p>
+        <ul>
+          <li>How long in Ohio and in the county</li>
+          <li>Ideal outcome if things go precisely how you want <span class="new">from your form</span></li>
+          <li>Other attorneys consulted</li>
+          <li>Marital status, date of marriage, date of separation</li>
+          <li>Other party&rsquo;s full name<small>For your conflict check</small></li>
+          <li>Children&rsquo;s first names and birth dates</li>
+          <li>Any current custody or support order</li>
+          <li>Bankruptcy filed or pending</li>
+          <li>How did you hear about us <span class="new">from your form</span></li>
+          <li>Upload court papers they received</li>
+        </ul>
+      </div>
+      <div class="lane l3">
+        <span class="when">After you take the case</span>
+        <h3>Secure client intake</h3>
+        <span class="lock">Never on the website</span>
+        <p class="who">The client, through a secure link you send once you agree to represent them.</p>
+        <ul>
+          <li>Social Security numbers (both parties)</li>
+          <li>Driver&rsquo;s license numbers and states</li>
+          <li>Full dates of birth and education</li>
+          <li>Home address and other names used</li>
+          <li>Maiden name restoration</li>
+          <li>Other party&rsquo;s address, phones, email</li>
+          <li>Is the spouse in the military</li>
+          <li>Backup contact who can always reach them</li>
+          <li>Children&rsquo;s medical insurance, policy, primary party</li>
+        </ul>
+      </div>
+      <div class="lane l4">
+        <span class="when">Cedric only</span>
+        <h3>Your decision</h3>
+        <p class="who">You, after the consult. Clients never see this.</p>
+        <ul>
+          <li>Will represent</li>
+          <li>Will investigate and report, follow up in __ days</li>
+          <li>Representation declined, letter sent</li>
+          <li>Party will think about it</li>
+          <li>Client declined</li>
+          <li>Interviewed by, date, and notes</li>
+        </ul>
+      </div>
+    </div>
+    <p class="micro">The first two columns are already on your free consultation page. The &ldquo;from your form&rdquo; questions were added today so the online version matches how you already work.</p>
+  </div>
+
+  <!-- CLIENT VIEW -->
+  <div class="panel" id="p-client" role="tabpanel" aria-labelledby="t-client">
+    <div class="mocks">
+      <div class="mock">
+        <div class="top"><span>Step 1 of 3</span><span>Your website</span></div>
+        <div class="in">
+          <h4>What do you need help with?</h4>
+          <span class="pill on">Divorce or dissolution</span>
+          <span class="pill">Custody or parenting time</span>
+          <span class="pill">Changing an existing order</span>
+          <div class="f">Which county do you live in?</div>
+          <div class="box">Fairfield County</div>
+          <div class="f">Name, phone, email</div>
+          <div class="box">Jordan R. &middot; (614) 555 0100</div>
+          <div class="go">Request my free consult</div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="top"><span>Step 2 of 3</span><span>Optional</span></div>
+        <div class="in">
+          <h4>Have five more minutes?</h4>
+          <div class="f">Ideally, what would the outcome be?</div>
+          <div class="box">Shared parenting and keeping the kids in their school</div>
+          <div class="f">Date of marriage &middot; separation</div>
+          <div class="box">06/2014 &middot; 03/2026</div>
+          <div class="f">Children (first names, birth dates)</div>
+          <div class="box">Ava, 2017 &middot; Miles, 2020</div>
+          <div class="go">Send and pick a time</div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="top"><span>After you say yes</span><span>Secure link</span></div>
+        <div class="in">
+          <h4>Welcome aboard, Jordan.</h4>
+          <p style="font-size:.86rem;color:var(--text)">Cedric has agreed to represent you. Please complete your client intake through your secure portal.</p>
+          <div class="vault">&#128274; Social Security, license, insurance, and contact details are collected here, inside your case file. Never by email or the website.</div>
+          <div class="go">Open my secure intake</div>
+        </div>
+      </div>
+    </div>
+    <p class="micro">Sample answers only. Names and details are made up for this preview.</p>
+  </div>
+
+  <!-- BACKEND -->
+  <div class="panel" id="p-back" role="tabpanel" aria-labelledby="t-back">
+    <div class="why">
+      <div class="prose">
+        <h3 style="margin-top:0">Why the sensitive part stays off the website</h3>
+        <p>A website form sends answers to an inbox. That is fine for a name and a phone number. It is not fine for Social Security numbers, license numbers, and children&rsquo;s insurance policies. If an inbox is ever compromised, that information is exposed, and protecting it is part of your duty to keep client information confidential.</p>
+      </div>
+      <div class="prose">
+        <h3 style="margin-top:0">What decides how this works</h3>
+        <p>The website can only be as smart as whatever receives the answers. Pick how you want the back half to run, and the site is shaped to match. Tap an option to see what changes.</p>
+      </div>
+    </div>
+    <div class="opts3">
+      <button class="op" type="button" data-r="a">
+        <span class="k">Option A</span>
+        <h3>Use MyCase</h3>
+        <p>You already pay for MyCase, and it has secure intake forms built in.</p>
+        <ul><li>Steps 1 and 2 on the website</li><li>Step 3 inside your MyCase portal</li><li>You run it, nothing extra to manage</li></ul>
+      </button>
+      <button class="op" type="button" data-r="b">
+        <span class="k">Option B</span>
+        <h3>Fully connected</h3>
+        <p>We run the whole flow for you, tied to your phone assistant and calendar.</p>
+        <ul><li>Secure link sends itself when a consult is booked</li><li>Reminders, follow ups, no shows handled</li><li>Every lead tracked from inquiry to client</li></ul>
+      </button>
+      <button class="op" type="button" data-r="c">
+        <span class="k">Option C</span>
+        <h3>Keep it simple</h3>
+        <p>No intake system yet. The site stays a clean consult request.</p>
+        <ul><li>Step 1 only, sent to your email</li><li>Step 2 questions asked on the call</li><li>Paper form for everything else</li></ul>
+      </button>
+    </div>
+    <div class="result" id="result" aria-live="polite"><b>Tap an option above</b> to see how your website changes with it.</div>
+  </div>
+
+  </div>
+</section>
+</main>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll('[role=tab]');
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).classList.toggle('on',on);});
+  });});
+  var R={
+    a:'<b>With MyCase:</b> your consult page keeps both steps. When you accept a client, you send the MyCase intake link and their answers land in their case file. We set up the MyCase form once to mirror your paper form. You keep it running from there.',
+    b:'<b>Fully connected:</b> the consult page books straight onto your calendar, the secure intake goes out on its own, and reminders and follow ups run in the background. This is a managed service we run for you each month, alongside the phone assistant.',
+    c:'<b>Keep it simple:</b> we shorten the consult page to Step 1, and requests go straight to cedric@cedriccollinslaw.com. Nothing sensitive is ever collected online. You can move to A or B whenever you are ready, and the site changes to match.'
+  };
+  var ops=document.querySelectorAll('.op'),out=document.getElementById('result');
+  ops.forEach(function(o){o.addEventListener('click',function(){
+    ops.forEach(function(x){x.setAttribute('aria-pressed',x===o);});out.innerHTML=R[o.dataset.r];
+  });});
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="fb"><b>Law Office of Cedric P. Collins, LLC</b><p>A divorce and family law practice helping Central Ohio families move forward with clarity and a steady advocate in their corner.</p></div>
+      <div class="foot-col"><h4>Practice</h4><a href="divorce.html">Divorce &amp; Dissolution</a><a href="child-custody.html">Child Custody</a><a href="modifications-and-enforcement.html">Modifications &amp; Enforcement</a><a href="grandparents-and-third-party-custody.html">Grandparents &amp; Third Party</a><a href="about.html">About Cedric</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h4>Areas We Serve</h4><a href="pickerington-family-law-attorney.html">Pickerington</a><a href="reynoldsburg-family-law-attorney.html">Reynoldsburg</a><a href="gahanna-family-law-attorney.html">Gahanna</a><a href="canal-winchester-family-law-attorney.html">Canal Winchester</a></div>
+      <div class="foot-col"><h4>Office</h4><a href="tel:+16144085608">(614) 408-5608</a><a href="mailto:cedric@cedriccollinslaw.com">cedric@cedriccollinslaw.com</a><span>Mon to Fri, 9am to 5pm</span><span>Mail: P.O. Box 108<br>Reynoldsburg, OH 43068</span></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 Law Office of Cedric P. Collins, LLC</span><span><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; SMS Terms</a></span><span>Serving Columbus &amp; Central Ohio</span></div>
+    <p class="disc">The information on this website is for general purposes only and does not constitute legal advice. Viewing this site or contacting the firm does not create an attorney client relationship. Prior results do not guarantee a similar outcome.</p>
+  </div>
+</footer>
+<script src="shared.js"></script>
+<!-- GHL chat + voice widget: paste the GoHighLevel embed snippet here. Keep the bottom-right corner free of other fixed elements. -->
+</body>
+</html>
